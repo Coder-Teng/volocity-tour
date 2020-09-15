@@ -1,0 +1,15 @@
+package ${genEntity.packagePath};
+
+public class ${genEntity.className} implements Serializable {
+
+/** Serial Version UID. */
+private static final long serialVersionUID = 1L;
+
+#foreach( $field in $genEntity.fieldList)
+    #set($fieldCount =$velocityCount+1 )
+    ${fieldCount}, $foreach.count, $foreach.index, $field.fieldType,$field.fieldName, $foreach.first, $foreach.hasNext
+###if($field.fieldType !="LocalDate" )
+##        !="LocalDate":  private $field.fieldType $field.fieldName;
+###end
+#end
+}

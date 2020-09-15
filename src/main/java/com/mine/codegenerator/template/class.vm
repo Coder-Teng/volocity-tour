@@ -1,0 +1,25 @@
+package ${genEntity.packagePath};
+
+import java.io.Serializable;
+import java.time.LocalDate;
+
+public class ${genEntity.className} implements Serializable {
+
+    /** Serial Version UID. */
+    private static final long serialVersionUID = 1L;
+
+#foreach( $field in $genEntity.fieldList)
+    private $field.fieldType $field.fieldName;
+#end
+
+#foreach( $field in $genEntity.fieldList)
+    public ${field.fieldType} get${field.fileNameUpperCase}() {
+        return this.${field.fieldName};
+    }
+
+    public void set${field.fileNameUpperCase}(${field.fieldType} ${field.fieldName}) {
+        this.${field.fieldName} = ${field.fieldName};
+    }
+
+#end
+}
